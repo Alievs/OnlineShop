@@ -1,0 +1,13 @@
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/public/bundles/
+/var/
+/vendor/
+/.idea/php.xml
+/.idea/site3.loc.iml
+/.idea/symfony2.xml
+/.idea/workspace.xml
+###< symfony/framework-bundle ###
