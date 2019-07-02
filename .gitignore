@@ -7,7 +7,10 @@
 /var/
 /vendor/
 /.idea/php.xml
-/.idea/site3.loc.iml
 /.idea/symfony2.xml
 /.idea/workspace.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/site4.loc.iml
+/.idea/vcs.xml
 ###< symfony/framework-bundle ###
