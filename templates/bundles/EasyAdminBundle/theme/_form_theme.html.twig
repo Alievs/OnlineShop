@@ -1,0 +1,16 @@
+{% block _category_id_widget %}
+    <table class="table">
+        <tbody>
+        {% for categorys in easyadmin.item.products %}
+            <tr>
+                {{ dump() }}
+                <td>{{ categorys.name }}</td>
+                <td>{{ categorys.slug }}</td>
+                <td>
+                    <a href="#" class="js-delete-scientist" data-url="">&times;</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

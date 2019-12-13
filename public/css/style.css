@@ -1,0 +1,88 @@
+
+body {
+    position: relative;
+    padding-top: 56px;
+    min-height: 54.5rem;
+
+}
+
+body::after {
+    content: '';
+    display: block;
+    height: 60px; /* Set same as footer's height */
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px; /* Set the fixed height of the footer here */
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #fff;
+    margin-top: 10px;
+}
+
+.bg-dark {
+    background-color: #343a40 !important;
+}
+.nav-button {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #fff;
+}
+.nav-button:hover, .nav-button:focus {
+    text-decoration: none;
+    color: #fff;
+}
+.starter-template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+.article-details {
+    font-size: .8em;
+}
+
+.icon-size {
+    font-size: 1.8em;
+}
+
+.like-article, .like-article:hover {
+    color: red;
+    text-decoration: none;
+}
+
+.buy-article, .buy-article:hover{
+    color: white;
+    text-decoration: none;
+}
+.added-article,.added-article:hover{
+    color: black;
+    text-decoration: none;
+}
+.btn-active {
+    background-color: #8035b5;
+    border-color: #8035b5;
+}
+.btn-secondary > span{
+    position: relative;
+    left: .1rem;
+    top: -.18rem;
+    display:none;
+}
+.btn-secondary:hover > span{
+    color: #fff;
+    display: inline-block;
+}
+/*for h1*/
+/* Max-width 1200px and Min-width 320px */
+@media (max-width: 1200px) and (min-width: 321px) {
+    h1 {
+        /* 30px - 24px */
+        font-size: calc(1.5rem + 6 * (100vw - 320px) / 880);
+    }
+}
+
+.login:hover {
+    background:#95a395;
+}
+

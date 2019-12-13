@@ -1,0 +1,42 @@
+{% extends 'base2.html.twig' %}
+
+{% block body %}
+{{ parent() }}
+    <h1></h1>
+
+    <div class="form-group ml-4">
+        <input type="checkbox" id="description-manipulation-profile">
+        <label class="description-describe-text"
+               for="description-manipulation-profile">Дополнительно</label>
+        <div class="description-list-wrapper">
+            <form action="{{ path('newfo') }}" method="post">
+            <div class="row">
+                {#<div class="form-group">{{ form(form) }}</div>#}
+                <div class="btn-group row" role="group">
+                    <button type="button" class="btn btn-secondary prev mt-2">Дополнительный сайт
+                    </button>
+                    <button type="button" class="btn btn-secondary next mx-1 mt-2">Группа канала</button>
+                    {#<div class="but1"><a href="">Сайт канала</a></div>#}
+                    {#<div class="but2"><a href="">Группа канала</a></div>#}
+                </div>
+                <div class="row col-lg-12 ">
+                    <lable for="sec-site" class="element1  mt-4 mb-1">Дополнительный сайт</lable>
+                    <input type="text" class="form-control element1" id="sec-site" name="sec-site"
+                           value="" placeholder="https://">
+
+                    <lable for="group-chanel" class="element2 current mt-4 mb-1">Группа канала</lable>
+                    <input type="text" class="form-control element2 current" id="group-chanel"
+                           name="group-chanel" value=""
+                           placeholder="https://">
+
+                    <lable for="statistic" class="mt-4 mb-1">Статистика канала</lable>
+                    <input type="text" class="form-control" id="statistic" name="statistic" value=""
+                           placeholder="https://">
+                </div>
+                <button type="submit" class="btn btn-secondary mt-4">Sign in</button>
+            </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

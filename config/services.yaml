@@ -23,5 +23,25 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
+
+#    App\Controller\EasyAdmin\:
+#        resource: '../src/Controller/EasyAdmin'
+#        tags: ['admin.service_arguments']
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    app.form.registration:
+        class: App\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: app_user_registration }
+
+
+    app.security.login_form_authenticator:
+        class: App\Security\LoginFormAuthenticator
+        autowire: true
+
+#    app.menu_builder:
+#        class: App\Menu\MenuBuilder
+#        arguments: ["@knp_menu.factory"]
+#        tags:
+#            - { name: knp_menu.menu_builder, method: createMainMenu, alias: main } # The alias is what is used to retrieve the menu

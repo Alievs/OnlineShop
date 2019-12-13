@@ -1,0 +1,112 @@
+easy_admin:
+    site_name: <i>F</i>rankenstein <i>M</i>onster
+    design:
+        brand_color: '#218838'
+        assets:
+            css: ['css/admin_backend.css']
+
+            js:
+                - 'https://unpkg.com/snarkdown@1.2.2/dist/snarkdown.umd.js'
+                - 'js/custom_backend.js'
+        templates:
+            field_id: 'bundles/admin/fields/_id.html.twig'
+        form_theme:
+            - '@EasyAdmin/form/bootstrap_4.html.twig'
+            - 'bundles/EasyAdminBundle/theme/_form_theme.html.twig'
+        menu:
+            - User
+            - Product
+            - GenusHorde
+            - Category
+    list:
+        title: 'List of %%entity_label%%'
+
+        actions: ['show', 'export']
+
+    entities:
+
+        Product:
+            class: App\Entity\Product
+            controller: App\Controller\EasyAdmin\ProductController
+            label: Products
+            help: 'Products are not covered by warranty!'
+            list:
+                fields:
+                    - { property: 'id', template: 'bundles/EasyAdminBundle/fields/_id.html.twig'}
+                    - 'name'
+                    - { property: 'publishedAt', format: 'M Y'}
+                    - { property: 'imageFilename', type: 'image', base_path: '/images/', sortable: false}
+                    - { property: 'category', label: 'Category' }
+                    - { property: 'speciesCount', format: '%b', label: 'Discovered' }
+                actions:
+                    - { name: 'edit', icon: 'pencil', label: 'Edit' }
+                    - { name: 'show', icon: 'info-circle', label: 'Show' }
+                sort: ['category.name', 'ASC']
+            search:
+                fields: ['id', 'name']
+            form:
+                fields:
+                    - { type: group, css_class: col-sm-6, label: Basic Information }
+                    -
+                      property: id
+                      type_options: {disabled: true}
+                    - { property: 'name', type: 'textarea', css_class: 'js-markdown-input' }
+                    - { property: 'publishedAt', type_options: { widget: 'single_text' }}
+                    - { property: 'category', type: 'easyadmin_autocomplete' }
+                    - { type: group, css_class: col-sm-6, label: Studied by ... }
+                    - 'secsite'
+            new:
+                fields:
+                    - '-id'
+            edit:
+                fields:
+                    -
+                      property: 'slug'
+                      help: 'unique auto-generated value'
+                      type_options: { disabled: true }
+            show:
+                actions:
+                    -
+                        name: 'product_feed'
+                        type: 'route'
+                        label: 'Feed product?'
+                        css_class: 'btn btn-info'
+                        icon: 'cutlery'
+                    - { name: 'changePublishedStatus', css_class: 'btn' }
+
+
+        Category:
+            class: App\Entity\Category
+            label: 'Category List'
+            list:
+                title: 'Categorys'
+                actions: ['-show']
+            disabled_actions: ['show']
+            form:
+                fields:
+                    -
+                        property: 'id'
+                        type: 'text'
+                        type_options:
+                          mapped: false
+                          attr: { class: 'js-user-email-field' }
+
+        User:
+            class: App\Entity\User
+            list:
+                fields:
+                - 'id'
+                - { property: 'email', type: 'email' }
+                - { property: 'username', template: 'bundles/EasyAdminBundle/fields/_field_user_full_name.html.twig'}
+                - { property: 'roles', label: 'Is Admin?', type: 'boolean' }
+            form:
+                fields:
+                    - 'email'
+                    - { property: 'fullName', type: 'text'}
+        GenusHorde:
+            class: App\Entity\Product
+            label: HORDE of Genuses
+            list:
+                dql_filter: "entity.publishedAt != false AND entity.imageFilename = 'asteroid.jpeg'"
+                sort: ['name', 'DESC']
+
