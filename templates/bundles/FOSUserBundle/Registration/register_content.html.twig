@@ -1,14 +1,15 @@
 <!-- BEGIN REGISTRATION FORM -->
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register form-signin blank'}}) }}
+{#novalidate= "novalidate"#}
 <div class="text-center mb-3">
     <img src="{{ asset('images/frankenstein.png') }}" class="grays">
 </div>
 
 <div class="form-group inp-line">
     {{ form_widget(form.first_name, { 'attr': {'class': 'form-control placeholder-no-fix marg', 'placeholder':'First name'} }) }}
-    {% for errorItem in form.first_name.vars.errors %}
-        <span class="help-inline">{{ errorItem.message }}</span>
-    {% endfor %}
+    {#{% for errorItem in form.first_name.vars.errors %}#}
+        {#<span class="help-inline">{{ errorItem.message }}</span>#}
+    {#{% endfor %}#}
 
     {{ form_widget(form.last_name, { 'attr': {'class': 'form-control placeholder-no-fix', 'placeholder':'Last Name'} }) }}
     {% for errorItem in form.last_name.vars.errors %}
@@ -36,9 +37,9 @@
 </div>
 <div class="form-group">
     {{ form_widget(form.agreeTerms) }}
-    {% for errorItem in form.agreeTerms.vars.errors %}
-        <span class="help-inline">{{ errorItem.message }}</span>
-    {% endfor %}
+    {#{% for errorItem in form.agreeTerms.vars.errors %}#}
+        {#<span class="help-inline">{{ errorItem.message }}</span>#}
+    {#{% endfor %}#}
 </div>
 <div class="form-actions tools">
     <a class="btn btn-primary" href="{{ path('fos_user_security_login') }}">Back to login</a>
