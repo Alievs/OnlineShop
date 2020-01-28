@@ -8,8 +8,10 @@ use App\Entity\Category;
 use App\Entity\Product;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 
@@ -86,4 +88,14 @@ class ArticleController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/new", name="newfo", methods={"POST", "GET"})
+     */
+
+    public function new(Request $request, EntityManagerInterface $em)
+    {
+        return $this->render('article/new.html.twig', [
+        ]);
+    }
 }
+

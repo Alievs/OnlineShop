@@ -15,6 +15,5 @@ return array(
     Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class => array('dev' => true, 'test' => true),
     Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class => array('all' => true),
     Symfony\Bundle\SecurityBundle\SecurityBundle::class => array('all' => true),
-    FOS\UserBundle\FOSUserBundle::class => array('all' => true),
     EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle::class => array('all' => true),
 );

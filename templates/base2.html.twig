@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    {% block title %}<title>Online Shop - Frankenstein Monster</title>{% endblock %}
+    <title>{% block title %}Frankenstein Shop{% endblock %}</title>
 
     {% block stylesheets %}
         <!-- Bootstrap core CSS -->
@@ -16,11 +16,13 @@
 
 </head>
 <body>
-{% block body %}
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="{{ path('app_homepage') }}">Frankenstein Monster</a>{#Shop'Zilla#}
+            <a class="navbar-brand logoAn" href="{{ path('app_homepage') }}">Frankenstein
+                <img src="{{ asset('images/franki5.png') }}" alt="">
+                Shop</a>
+            {#<img class="logoAn" src="{{ asset('images/franki5.png') }}" alt="">#}
 
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav mr-auto">
@@ -42,15 +44,15 @@
                                 {{ app.user.username }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="{{ path('app_homepage') }}">Profile</a>
-                                {% if is_granted('ROLE_ADMIN_ARTICLE') %}
-                                    <a class="dropdown-item" href="{{ path('app_homepage') }}">Create Post</a>
+                                <a class="dropdown-item" href="#">Profile</a>
+                                {% if is_granted('ROLE_ADMIN') %}
                                 {% endif %}
-                                <a class="dropdown-item" href="{{ path('fos_user_security_logout') }}">Logout</a>
+                                <a class="dropdown-item" href="{{ path('app_logout') }}">Logout</a>
                             </div>
                         </li>
                     {% else %}
-                        <li class="login"><a class="nav-button" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
+                        <li class="login"><a class="nav-button" href="{{ path('app_login') }}">Login</a></li>
+                        <li class="login"><a class="nav-button" href="{{ path('app_register') }}">Sign up</a></li>
                     {% endif %}
                 </ul>
 
@@ -64,7 +66,7 @@
             </div>
         </div>
     </nav>
-{% endblock %}
+    {% block body %}{% endblock %}
 
 <footer class="footer bg-dark">
     <div class="container">

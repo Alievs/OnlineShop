@@ -1,0 +1,29 @@
+{% block profile_data %}
+    <div class="col-md-9">
+        <div class="row">
+            <div class="user_show">
+
+                <div class="bld-text profile_title">FirstName:
+                </div>
+                <p class="nobld-text profile-info">{{ user.firstName }}
+                </p>
+
+                <div class="bld-text profile_title">Email address:
+                </div>
+                <p class="nobld-text profile-info">{{ user.email }}
+                </p>
+
+                <div class="bld-text profile_title">Phone Number:
+                </div>
+                <p class="nobld-text profile-info">{{ user.phoneNumber }}
+                </p>
+
+                <div class="bld-text profile_title">Delivery Address:
+                </div>
+                <p class="nobld-text profile-info">{{ user.address }}
+                </p>
+
+            </div>
+        </div>
+    </div>
+{% endblock profile_data %}

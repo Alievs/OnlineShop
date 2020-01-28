@@ -20,7 +20,7 @@ class CategoryFixture extends BaseFixture
 
     protected function loadData(ObjectManager $manager)
     {
-        $this->createUser(5, 'main_categorys', function($i) use ($manager) {
+        $this->createMany(5, 'main_categorys', function($i) {
 
             $category = new Category();
             $category->setName(self::$productCategory[$i]);

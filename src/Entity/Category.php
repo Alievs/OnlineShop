@@ -50,6 +50,7 @@ class Category
         return $this;
     }
 
+
     /**
      * @return Collection|Product[]
      */

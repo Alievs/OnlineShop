@@ -27,7 +27,7 @@ abstract class BaseFixture extends Fixture
         $this->loadData($manager);
     }
 
-    protected function createUser(int $count, string $groupName, callable $factory)
+    protected function createMany(int $count, string $groupName, callable $factory)
     {
         for ($i = 0; $i < $count; $i++) {
             $entity = $factory($i);
@@ -37,6 +37,17 @@ abstract class BaseFixture extends Fixture
             $this->manager->persist($entity);
             // store for usage later as groupName_#COUNT#
             $this->addReference(sprintf('%s_%d', $groupName, $i), $entity);
+        }
+    }
+
+    protected function createSimpleMany(string $className, int $count, callable $factory)
+    {
+        for ($i = 0; $i < $count; $i++) {
+            $entity = new $className();
+            $factory($entity, $i);
+            $this->manager->persist($entity);
+            // store for usage later as App\Entity\ClassName_#COUNT#
+            $this->addReference($className . '_' . $i, $entity);
         }
     }
 

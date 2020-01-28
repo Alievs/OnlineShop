@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -39,21 +41,6 @@ class Product
     private $publishedAt;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $secsite;
-
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $groupsite;
-
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $statistics;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $imageFilename;
@@ -64,6 +51,20 @@ class Product
      */
     private $category;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $unit_price;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\CartLine", mappedBy="product")
+     */
+    private $cartLines;
+
+    public function __construct()
+    {
+        $this->cartLines = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -119,42 +120,6 @@ class Product
         return $this;
     }
 
-    public function getSecsite(): ?string
-    {
-        return $this->secsite;
-    }
-
-    public function setSecsite(?string $secsite): self
-    {
-        $this->secsite = $secsite;
-
-        return $this;
-    }
-
-    public function getGroupsite(): ?string
-    {
-        return $this->groupsite;
-    }
-
-    public function setGroupsite(?string $groupsite): self
-    {
-        $this->groupsite = $groupsite;
-
-        return $this;
-    }
-
-    public function getStatistics(): ?string
-    {
-        return $this->statistics;
-    }
-
-    public function setStatistics(?string $statistics): self
-    {
-        $this->statistics = $statistics;
-
-        return $this;
-    }
-
     public function getImageFilename(): ?string
     {
         return $this->imageFilename;
@@ -195,6 +160,47 @@ class Product
     public function __toString()
     {
         return (string) $this->getName();
+    }
+
+
+    public function getUnitPrice(): ?int
+    {
+        return $this->unit_price;
+    }
+
+    public function setUnitPrice(int $unit_price): self
+    {
+        $this->unit_price = $unit_price;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CartLine[]
+     */
+    public function getCartLines(): Collection
+    {
+        return $this->cartLines;
+    }
+
+    public function addCartLine(CartLine $cartLine): self
+    {
+        if (!$this->cartLines->contains($cartLine)) {
+            $this->cartLines[] = $cartLine;
+            $cartLine->addProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCartLine(CartLine $cartLine): self
+    {
+        if ($this->cartLines->contains($cartLine)) {
+            $this->cartLines->removeElement($cartLine);
+            $cartLine->removeProduct($this);
+        }
+
+        return $this;
     }
 
 }

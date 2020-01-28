@@ -56,7 +56,7 @@ body {
   box-shadow: 0 0 0 3px green, 0 0 13px #333;
   border-radius: 200px;
 }
-img{
+.user-image{
   width: 150px;
   height: 150px;
 }

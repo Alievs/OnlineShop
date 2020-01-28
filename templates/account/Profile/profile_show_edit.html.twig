@@ -1,0 +1,35 @@
+{% extends "account/layout.html.twig" %}
+
+{% block user_content %}
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="form-actions col-lg-2 mt-4 text-center">
+            <a class="btn btn-primary" href="#">Catalog</a>
+        </div>
+
+            <div class="col-lg-10 mt-4">
+                <span class="text-info">
+                    <h1 class="pl-4">{% block name %}{% endblock name %}</h1>
+                </span>
+            </div>
+
+        <div class="col-md-2 ml-4">
+
+
+            <ul>
+                <li><a href="{{ path('fos_user_profile_show') }}">User account</a></li>
+                <li><a href="#">Favorite</a></li>
+                <li><a href="#">Shopping cart</a></li>
+                <li><a href="{{ path('fos_user_profile_edit') }}">Edit personal data</a></li>
+
+            </ul>
+
+        </div>
+        <div class="vl mr-4"></div>
+
+        {% block profile_data %}{% endblock profile_data %}
+
+    </div>
+</div>
+{% endblock %}

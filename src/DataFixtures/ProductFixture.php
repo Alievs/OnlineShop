@@ -31,7 +31,7 @@ class ProductFixture extends BaseFixture
 
     public function loadData(ObjectManager $manager)
     {
-        $this->createUser(100, 'main_products', function($i) use ($manager) {
+        $this->createMany(100, 'main_products', function($i) use ($manager) {
 
             $product = new Product();
             $product->setName($this->faker->randomElement(self::$productTitle))
@@ -59,6 +59,7 @@ EOF
                 $product->setPublishedAt(new \DateTime(sprintf('-%d days', rand(1, 100))));
             }
             $product->setCategory($this->getRandomReference('main_categorys'));
+            $product->setUnitPrice(rand(10, 10000));
 
             return $product;
         });

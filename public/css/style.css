@@ -86,3 +86,33 @@ body::after {
     background:#95a395;
 }
 
+.logoAn {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+/*profile style*/
+.vl {
+    border-left: 0.1rem solid lightgray;
+    height: 600px;
+}
+.bld-text{
+    font-weight: bold;
+}
+.nobld-text{
+    font-weight: normal;
+}
+.user_show {
+    float: left;
+    width: 43.07692em;
+}
+.profile_title{
+    float: left;
+    width: 180px;
+    font-size: 15px;
+    box-sizing: border-box;
+    padding-right: 8px;
+}
+.profile-info{
+    line-height: 1.3125rem;
+    font-size: .9375rem;
+}
