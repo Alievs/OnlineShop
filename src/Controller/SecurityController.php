@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Cart;
 use App\Entity\User;
 use App\Form\UserRegistrationFormType;
 use App\Security\LoginFormAuthenticator;
@@ -71,14 +72,15 @@ class SecurityController extends AbstractController
                 $user->agreeTerms();
             }
 
-
-
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
+
+            $cart = new Cart();
+            $cart->setUser($user);
+            $em->persist($cart);
             $em->flush();
-//            $cart = new Cart();
-//            $cart->
-            dd($user);
+
+
             return $guardHandler->authenticateUserAndHandleSuccess(
                 $user,
                 $request,

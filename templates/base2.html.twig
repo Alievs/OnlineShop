@@ -44,7 +44,7 @@
                                 {{ app.user.username }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Profile</a>
+                                <a class="dropdown-item" href="{{ path('app_account_show') }}">Profile</a>
                                 {% if is_granted('ROLE_ADMIN') %}
                                 {% endif %}
                                 <a class="dropdown-item" href="{{ path('app_logout') }}">Logout</a>
@@ -66,6 +66,12 @@
             </div>
         </div>
     </nav>
+    {% for message in app.flashes('updated') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
     {% block body %}{% endblock %}
 
 <footer class="footer bg-dark">
