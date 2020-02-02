@@ -2,36 +2,40 @@
 /**
  * Created by PhpStorm.
  * User: alibaba
- * Date: 28.01.20
- * Time: 19:50
+ * Date: 31.01.20
+ * Time: 17:37
  */
 
 namespace App\Form;
 
 
-use App\Entity\User;
+use App\Entity\CartLine;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
-class UserProfileFormType extends AbstractType
+class QuantityFormType extends AbstractType
 {
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class)
-            ->add('firstName')
-            ->add('phoneNumber')
-            ->add('address')
+            ->add('quantity', null, [
+                'constraints' => [
+                new NotBlank([
+                ]),
+                    ]
+            ])
+
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => CartLine::class,
         ]);
     }
+
 }

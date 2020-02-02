@@ -59,9 +59,19 @@ body::after {
     color: black;
     text-decoration: none;
 }
-.btn-active {
-    background-color: #8035b5;
-    border-color: #8035b5;
+/*.btn-active {*/
+    /*background-color: #019758;*/
+    /*border-color: #019758;*/
+/*}*/
+.btn:hover {
+    color: #fff;
+    background-color: #019710;
+    border-color: #019710;
+}
+.btn-secondary:hover{
+    color: #fff;
+    background-color: #019710;
+    border-color: #019710;
 }
 .btn-secondary > span{
     position: relative;

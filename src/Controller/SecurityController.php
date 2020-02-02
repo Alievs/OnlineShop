@@ -32,7 +32,7 @@ class SecurityController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->isGranted('ROLE_USER')) {
-            throw $this->createAccessDeniedException('You already log in!');
+            return new RedirectResponse($this->router->generate('app_homepage'));
         }
 
         //REMEMBER!!!!!! get the login error if there is one
@@ -40,6 +40,7 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
+//        dd();
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername,
             'error' => $error
@@ -60,7 +61,8 @@ class SecurityController extends AbstractController
         $form = $this->createForm(UserRegistrationFormType::class);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid())
+        {
             /** @var User $user */
             $user = $form->getData();
             $user->setPassword($passwordEncoder->encodePassword(

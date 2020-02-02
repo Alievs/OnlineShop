@@ -19,32 +19,37 @@ class CartLineRepository extends ServiceEntityRepository
         parent::__construct($registry, CartLine::class);
     }
 
-    // /**
-    //  * @return CartLine[] Returns an array of CartLine objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?CartLine
+    public function findAllCartLineByUser($id)
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
+        $qb = $this->createQueryBuilder('cart_line')
+            ->leftJoin('cart_line.cart', 'cart')
+            ->andWhere('cart_line.cart = :cart')
+            ->andWhere('cart_line.sold = :false')
+            ->setParameter('cart', $id)//'cart_line.cart = : cart.id'
+            ->setParameter('false', 'false')
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getResult();
+
+        return $qb;
+
+
+
     }
-    */
+
+    public function findProductCartLine($cartline_id)
+    {
+        $qb = $this->createQueryBuilder('cart_line')
+            ->leftJoin('cart_line.product', 'product')
+            ->andWhere('cart_line.product = :product')
+            ->setParameter('product', $cartline_id)//'cart_line.cart = : cart.id'
+            ->getQuery()
+            ->getResult();
+
+        return $qb;
+
+
+
+    }
+
 }

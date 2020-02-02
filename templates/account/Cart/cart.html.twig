@@ -1,0 +1,17 @@
+{% extends "account/profile.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
+{% endblock %}
+
+{% block name %}Cart{% endblock name %}
+
+{% block profile_data %}
+    {% include "account/Cart/cart_content.html.twig" %}
+{% endblock profile_data %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/cart.js') }}"></script>
+{% endblock %}

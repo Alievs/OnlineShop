@@ -21,11 +21,6 @@ class CartLine
     /**
      * @ORM\Column(type="integer")
      */
-    private $total_price;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
     private $quantity;
 
     /**
@@ -35,6 +30,7 @@ class CartLine
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Product", inversedBy="cartLines")
+     * @ORM\JoinTable(name="cart_line_product")
      */
     private $product;
 
@@ -52,18 +48,6 @@ class CartLine
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getTotalPrice(): ?int
-    {
-        return $this->total_price;
-    }
-
-    public function setTotalPrice(int $total_price): self
-    {
-        $this->total_price = $total_price;
-
-        return $this;
     }
 
     public function getQuantity(): ?int

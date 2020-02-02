@@ -38,10 +38,10 @@ class ProductFixture extends BaseFixture
                 ->setImageFilename($this->faker->randomElement(self::$productImages))
                 //            $comment->setArticle($this->getRandomReference('main_articles'));
                 ->setDescription(<<<EOF
-Spicy **jalapeno bacon** ipsum dolor amet veniam shank in dolore. Ham hock nisi landjaeger cow,
+Ipsum dolor amet veniam shank in dolore. Ham hock nisi landjaeger cow,
 lorem proident [beef ribs](https://baconipsum.com/) aute enim veniam ut cillum pork chuck picanha. Dolore reprehenderit
-labore minim pork belly spare ribs cupim short loin in. Elit exercitation eiusmod dolore cow
-**turkey** shank eu pork belly meatball non cupim.
+labore minim pork belly spare ribs cupim short loin in. Elit exercitation eiusmod dolore cow.
+shank eu pork belly meatball non cupim.
 Laboris beef ribs fatback fugiat eiusmod jowl kielbasa alcatra dolore velit ea ball tip. Pariatur
 laboris sunt venison, et laborum dolore minim non meatball. Shankle eu flank aliqua shoulder,
 capicola biltong frankfurter boudin cupim officia. Exercitation fugiat consectetur ham. Adipisicing

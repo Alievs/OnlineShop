@@ -1,8 +1,11 @@
 {% extends 'base2.html.twig' %}
 
-{% block body %}
-    {{ parent() }}
+    {% block stylesheets %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ asset('css/product/product.css') }}">
+    {% endblock %}
 
+{% block body %}
     <div class="container-fluid">
 
         <div class="row">
@@ -24,15 +27,18 @@
                 <div class="row">
 
                     {% for product in products %}
-
                         <div class="col-lg-3 col-md-4 col-sm-2 mb-4">
                             <div class="card h-100">
-                                <a href="{{ path('product_show', {name: product.category.name, slug: product.slug}) }}"><img class="card-img-top" src="{{ asset(product.imageFilename|image_path) }}" alt=""></a>
+                                <a href="{{ path('product_show', {name: product.category.name, slug: product.slug}) }}">
+                                    <div class="product-photo">
+                                        <img class="card-img-top" src="{{ asset(product.imageFilename|image_path) }}" alt="">
+                                    </div>
+                                </a>
                                 <div class="card-body">
                                     <h4 class="card-title">
                                         <a href="{{ path('product_show', {name: product.category.name, slug: product.slug}) }}">{{ product.name }}</a>
                                     </h4>
-                                    <h5>$24.99</h5>
+                                    <h5>${{ product.unitPrice }}</h5>
                                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
                                 </div>
                                 <div class="card-footer">

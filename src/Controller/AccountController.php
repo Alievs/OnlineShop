@@ -2,13 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\Cart;
+use App\Entity\CartLine;
 use App\Entity\User;
 use App\Form\UserProfileFormType;
-use App\Repository\UserRepository;
+use App\Repository\CartLineRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -53,5 +56,54 @@ class AccountController extends AbstractController
             'profileForm' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/account/cart", name="app_account_cart")
+     */
+    public function cart(CartLineRepository $cartLineRepo)
+    {
+
+        $cartid = $this->getUser()->getCart()->getId();
+        $cartline = $cartLineRepo->findAllCartLineByUser($cartid);
+
+
+        return $this->render('account/Cart/cart.html.twig', [
+            'cartlines' => $cartline,
+            'cartid' => $cartid,
+        ]);
+    }
+
+    /**
+     * @Route("/account/cart/{cart_id}/{cartline_id}", name="app_cartline_remove", methods={"DELETE"})
+     */
+    public function delete($cart_id, $cartline_id, EntityManagerInterface $em)
+    {
+
+        $cart = $em->getRepository(Cart::class)->find($cart_id);
+        if (!$cart) {
+            throw $this->createNotFoundException('cart not found');
+        }
+        $cartlinez = $em->getRepository(CartLine::class)
+            ->find($cartline_id);
+        if (!$cartlinez) {
+            throw $this->createNotFoundException('cartline not found');
+        }
+
+        $cart->removeCartLine($cartlinez);
+        $em->persist($cart);
+        $em->flush();
+//        $response = new Response();
+//        $response->send();
+        return new Response(null, 204);
+
+//        $cartline = $this->getDoctrine()->getRepository(CartLine::class)->find($id);
+//
+//        $em->remove($cartline);
+//        $em->flush();
+//
+//        $response = new Response();
+//        $response->send();
+    }
+
 
 }

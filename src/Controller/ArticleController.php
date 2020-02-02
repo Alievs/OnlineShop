@@ -5,7 +5,6 @@ namespace App\Controller;
 
 
 use App\Entity\Category;
-use App\Entity\Product;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -38,8 +37,6 @@ class ArticleController extends AbstractController
      */
     public function category(Category $category, ProductRepository $repository, CategoryRepository $repositoryCat)
     {
-        $category->getId();
-
         $categorys = $repositoryCat->findAll();
         $products = $repository->findAllCategoryOrdered($category);
 
@@ -70,30 +67,12 @@ class ArticleController extends AbstractController
 //    }
 
     /**
-     * @Route("/category/{name}/{slug}", name="product_show")
-     */
-    public function product(ProductRepository $repository, $slug)
-    {
-        $product = $repository->findOneBy(['slug' => $slug]);
-        /**
-         * @var Product $product
-         */
-        if (!$product) {
-            throw $this->createNotFoundException(sprintf("No product for slug %s", $slug));
-        }
-
-
-        return $this->render('article/product.html.twig', [
-            'product' => $product,
-        ]);
-    }
-
-    /**
-     * @Route("/new", name="newfo", methods={"POST", "GET"})
+     * @Route("/new/{id}", name="newfo", methods={"POST", "GET"})
      */
 
     public function new(Request $request, EntityManagerInterface $em)
     {
+
         return $this->render('article/new.html.twig', [
         ]);
     }

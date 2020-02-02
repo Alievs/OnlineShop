@@ -1,9 +1,7 @@
 {% extends 'base2.html.twig' %}
 
-{% block body %}
-{{ parent() }}
-    <h1></h1>
 
+{% block body %}
     <div class="form-group ml-4">
         <input type="checkbox" id="description-manipulation-profile">
         <label class="description-describe-text"
@@ -30,8 +28,8 @@
                            placeholder="https://">
 
                     <lable for="statistic" class="mt-4 mb-1">Статистика канала</lable>
-                    <input type="text" class="form-control" id="statistic" name="statistic" value=""
-                           placeholder="https://">
+                    <input type="text"  id="statistic" name="statistic" value=""
+                           placeholder="https://" size="1">
                 </div>
                 <button type="submit" class="btn btn-secondary mt-4">Sign in</button>
             </div>
