@@ -84,17 +84,21 @@ input[type=checkbox]:checked + label + .description-list-wrapper{
     margin: auto;
     transition: transform .4s ease-out;
 }
+.carousel-item img{
+    max-width: 750px;
+    max-height: 750px;
+}
 .product-photo:hover img {
     transform: scale(1.05);
 }
 .card-body{
     padding-top: 1rem!important;
 }
-
 .inptheight{
     height: 2rem;
     width: 4rem;
 }
+
 /*/////////////////////////////////{end - transform}/////////////////////////////////////////*/
 
 /*/////////////////////////////////{2 - button-group(Bootstrap)}/////////////////////////////////////////*/

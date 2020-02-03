@@ -67,6 +67,32 @@ class AccountController extends AbstractController
         $cartline = $cartLineRepo->findAllCartLineByUser($cartid);
 
 
+//        $ds = [1,2,[2.1,2.2,2.3],3,[3.1,[3.11,3.12,3.13]]];
+//
+//        foreach ($ds as $d):
+//            if (is_array($d))
+//            {
+//                foreach ($d as $dd){
+//                    if (is_array($dd))
+//                    {
+//                        foreach ($dd as $ddd){
+////                            if (is_array($ddd))
+////                            {
+////
+////                            }
+//                            echo "....".$ddd."<br/>";
+//                        }
+//
+//                    }else{
+//                        echo '..'.$dd."<br/>";
+//                    }
+//                }
+//            }else{
+//                echo $d."<br/>";
+//            }
+//        endforeach;
+
+
         return $this->render('account/Cart/cart.html.twig', [
             'cartlines' => $cartline,
             'cartid' => $cartid,

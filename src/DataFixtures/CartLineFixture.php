@@ -23,9 +23,9 @@ class CartLineFixture extends BaseFixture implements DependentFixtureInterface
 
             $cartLine = new CartLine();
             $cartLine->setQuantity(1);
-            $cartLine->setTotalPrice(12);
             $cartLine->setSold(false);
             $cartLine->setCart($this->getRandomReference('main_carts'));
+            $cartLine->addProduct($this->getRandomReference('main_products'));
 
 
             return $cartLine;

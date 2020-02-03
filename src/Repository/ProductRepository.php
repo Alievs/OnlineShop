@@ -48,21 +48,6 @@ class ProductRepository extends ServiceEntityRepository
         return $qb;
     }
 
-    public function findProductCartLine($cartline_id)
-    {
-        $qb = $this->createQueryBuilder('product')
-            ->leftJoin('product.cartLines', 'cart_line_product')
-            ->andWhere('product.cartLines = :product_id')
-            ->setParameter('product_id', $cartline_id)//'cart_line.cart = : cart.id'
-            ->getQuery()
-            ->getResult();
-
-        return $qb;
-
-
-
-    }
-
     private function addIsPublishedQueryBuilder(QueryBuilder $qb = null)
     {
         return $this->getOrCreateQueryBuilder($qb)

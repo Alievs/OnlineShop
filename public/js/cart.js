@@ -16,6 +16,17 @@ $(document).ready(function(){
     });
 
 
+    const cartline = document.getElementById('cartline');
+
+    if (cartline) {
+        cartline.addEventListener('click', (e) =>{
+            if (e.target.className === 'counter data-id'){
+                const id = e.target.getAttribute('value');
+                
+            }
+        });
+    }
+
 
     // const cartline = document.getElementById('cartline');
     //

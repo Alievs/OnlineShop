@@ -13,21 +13,16 @@ class ProductFixture extends BaseFixture
         'Acer Nitro 5',
         'SomeProduct',
         'ReactSazerland',
+        'WeirdProduct',
     ];
 
     private static $productImages = [
-        'asteroid.jpeg',
-        'mercury.jpeg',
-        'lightspeed.png',
+        'product11.jpg',
+        'product22.jpg',
+        'product33.jpg',
+        'product44.jpg',
     ];
 
-    private static $productCategory = [
-        'Electronics',
-        'Fashion',
-        'Home & Garden',
-        'Toys & Hobbies',
-        'Other Categories',
-    ];
 
     public function loadData(ObjectManager $manager)
     {

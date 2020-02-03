@@ -33,7 +33,7 @@
                         <div class="quantity">
                             <input type="text" value="Quantity:" class="bminus" disabled>
                             {#<p class="bminus">Quantity:</p>#}
-                            <input type="text" class="counter" name="count" value="{{ cartline.quantity }}" size="2" disabled>
+                            <input type="text" class="counter data-id" name="count" value="" size="2">
                             {#<input type="button" value="+" class="bplus">#}
                         </div>
 
@@ -42,15 +42,6 @@
                         {% endfor %}
                     {% endfor %}
 
-                    {#{% for cart in carts.product %}#}
-                        {#<li class="list-group-item">#}
-                            {#<a href="{{ path('newfo', {#}
-                                {#'id': product.id#}
-                            {#}) }}">#}
-
-                            {#</a>#}
-                        {#</li>#}
-                    {#{% endfor %}#}
 
                 </div>
             {#</ul>#}
